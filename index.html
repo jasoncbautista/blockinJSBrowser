@@ -1,0 +1,24 @@
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+
+    $(function(){
+
+
+        $.ajax({
+            url: 'null.com?dsfdsafafafasfas=8sdf8dsf8sdfdsfsfds', 
+            data: { email: null}, 
+            async: false, 
+            success: function(f) {
+                console.log(f){}
+                }
+            , error: function(ee){
+                console.log('error', ee);
+            }
+        });
+    }
+
+    });
+
+</script>
