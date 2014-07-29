@@ -14,7 +14,7 @@
         var t = setInterval(function(){
             counter++;
             $("#timer").text(counter);
-        }, 100);
+        }, 1000);
 
         var redo = function(fxn){
             more++;
@@ -38,13 +38,11 @@
         $("#clickme").click(function(){
             $("#header").text("cool " + Math.random());
         });
-        /*
         setTimeout(function(){
             redo(function(){
                 console.log("ended")
             });
-        }, 2000);
-        */
+        }, 5000);
         
 
     });
