@@ -24,6 +24,7 @@
                 fxn(); // can't return a fxn itself
             }else{
                 
+                /*
             var fakeBlock = $.ajax({
                                 type: "GET",
                                 url: "?dsfsdfdsfsd=ffffsdfs8",
@@ -31,8 +32,11 @@
                             }).responseText;
                 
                 console.log("fuck", fakeBlock);
+                */
                 
+                $("body").append("<div id='blockme'> wassa </div>");
                // redo(fxn);
+               $("#blockme").remove();
                return redo;
             }
         };
