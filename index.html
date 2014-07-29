@@ -15,27 +15,30 @@
 
 
         var redo = function(fxn){
-            $.ajax({
-                url: '/dsfdsafafafasfas=8sdf8dsf8sdfdsfsfds', 
-                data: { email: null}, 
-                async: false, 
-                success: function(f) {
-                    console.log(f);
-                    }
-                , error: function(ee){
-                    console.log('error', ee);
-                    if(blockedEnd){
-                        fxn();
-                    } else {
-                        redo(fxn)
-                    }
-                }
-            });
+
+            if(blockedEnd){
+                fxn();
+            }else{
+                
+            var fakeBlock = $.ajax({
+                                type: "GET",
+                                url: "?dsfsdfdsfsd=ffffsdfs8",
+                                async: false
+                            }).responseText;
+                
+                console.log("fuck", fakeBlock);
+                
+                redo(fxn);
+
+            }
+            
         };
 
-        redo(function(){
-            console.log("ended")
-        });
+        setTimeout(function(){
+            redo(function(){
+                console.log("ended")
+            });
+        }, 2000);
         
 
     });
@@ -44,3 +47,4 @@
 
 
 <div id="timer">0</div>
+<div id="sup">0</div>
