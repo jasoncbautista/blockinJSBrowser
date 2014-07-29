@@ -9,9 +9,10 @@
     $(function(){
 
         var doStuff = function(cb){
+            console.log('do Stuff called')
             setTimeout(function(){
                cb(5); 
-           })
+           }, 1000)
         }
         var block = function(fxn){
             var done = false;
@@ -28,6 +29,7 @@
         result = a;
 
     }
+    doStuff(getMyShit);
     while(!done){
         $("body").append("<div id='blockme'> wassa </div>");
                    // redo(fxn);
@@ -39,7 +41,7 @@
                }
                return result;
            };
-           
+
            var x = block(doStuff);
            console.log('x', x);
 
