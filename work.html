@@ -14,6 +14,16 @@
           console.log("2Called back by the worker!\n");
       };
 
+
+      while(true){
+        debugger;
+        $("body").append("<div id='blockme'> wassa </div>");
+                   // redo(fxn);
+           $("#blockme").remove();
+                   console.log("wassa");
+
+
+       }
     });
 
     // Trampoline: http://raganwald.com/2013/03/28/trampolines-in-javascript.html
