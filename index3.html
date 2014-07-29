@@ -14,15 +14,14 @@
            })
         }
         var block = function(fxn){
-          var done = false;
-          var result;
+            var done = false;
+            var result;
 
-          var myWorker = new Worker("my_task.js");
+                var myWorker = new Worker("my_task.js");
 
-          myWorker.onmessage = function (oEvent) {
-            console.log("Called back by the worker!\n");
-
-          });
+                myWorker.onmessage = function (oEvent) {
+          console.log("Called back by the worker!\n");
+      };
       var getMyShit = function(a){
         done = true;
         result = a;
@@ -34,14 +33,30 @@
                    $("#blockme").remove();
                    console.log("wassa");
 
+
+
                }
                return result;
            };
            
-           var x = block(doStuff);
-           console.log('x', x);
+           //var x = block(doStuff);
+           //console.log('x', x);
 
        });
+
+    /* Sync xhr
+    //also this does not work in worker:
+    //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Example.3A_Synchronous_HTTP_request_from_a_Worker
+
+    self.onmessage = function (event) {
+        if (event.data === "Hello") {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "myFile.txt", false);  // synchronous request
+            xhr.send(null);
+            self.postMessage(xhr.responseText);
+        }
+    };
+    */
 
 
     // Trampoline: http://raganwald.com/2013/03/28/trampolines-in-javascript.html
