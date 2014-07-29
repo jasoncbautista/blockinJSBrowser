@@ -13,18 +13,30 @@
             $("#timer").text(counter);
         }, 100);
 
-        $.ajax({
-            url: '/dsfdsafafafasfas=8sdf8dsf8sdfdsfsfds', 
-            data: { email: null}, 
-            async: false, 
-            success: function(f) {
-                console.log(f);
+
+        var redo = function(fxn){
+            $.ajax({
+                url: '/dsfdsafafafasfas=8sdf8dsf8sdfdsfsfds', 
+                data: { email: null}, 
+                async: false, 
+                success: function(f) {
+                    console.log(f);
+                    }
+                , error: function(ee){
+                    console.log('error', ee);
+                    if(blockedEnd){
+                        fxn();
+                    } else {
+                        redo(fxn)
+                    }
                 }
-            , error: function(ee){
-                console.log('error', ee);
-            }
+            });
+        };
+
+        redo(function(){
+            console.log("ended")
         });
-    
+        
 
     });
 
