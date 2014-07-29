@@ -1,7 +1,9 @@
 
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
+    // TODO play with web sockets
 
     $(function(){
 
@@ -14,12 +16,9 @@
             $("#timer").text(counter);
         }, 100);
 
-
         var redo = function(fxn){
-
             more++;
             $("#sup").text(more);
-
             if(blockedEnd){
                 fxn();
             }else{
@@ -33,9 +32,7 @@
                 console.log("fuck", fakeBlock);
                 
                 redo(fxn);
-
             }
-            
         };
 
         setTimeout(function(){
@@ -47,6 +44,16 @@
 
     });
 
+    /* Sync xhr
+    self.onmessage = function (event) {
+        if (event.data === "Hello") {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "myFile.txt", false);  // synchronous request
+            xhr.send(null);
+            self.postMessage(xhr.responseText);
+        }
+    };
+    */
 </script>
 
 
