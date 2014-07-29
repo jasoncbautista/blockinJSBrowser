@@ -35,16 +35,24 @@
             }
         };
 
+        $("#clickme").click(function(){
+            $("#header").text("cool " + Math.random());
+        });
+        /*
         setTimeout(function(){
             redo(function(){
                 console.log("ended")
             });
         }, 2000);
+        */
         
 
     });
 
     /* Sync xhr
+    //also this does not work in worker:
+    //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Example.3A_Synchronous_HTTP_request_from_a_Worker
+
     self.onmessage = function (event) {
         if (event.data === "Hello") {
             var xhr = new XMLHttpRequest();
@@ -56,6 +64,7 @@
     */
 </script>
 
-
+<h1 id="header"> wassa </h1>
+<button id="clickme"> Click me </button>
 <div id="timer">0</div>
 <div id="sup">0</div>
