@@ -2,7 +2,7 @@
 setTimeout(function(){
 postMessage("I\'m working before postMessage(\'ali\').");
 
-}, 2000);
+}, 1000);
 
 setTimeout(function(){
 

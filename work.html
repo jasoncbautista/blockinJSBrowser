@@ -16,7 +16,12 @@
 
 
       while(true){
-        debugger;
+        var fakeBlock = $.ajax({
+          type: "GET",
+          url: "?dsfsdfdsfsd=ffffsdfs8",
+          async: false
+        }).responseText;
+
         $("body").append("<div id='blockme'> wassa </div>");
                    // redo(fxn);
            $("#blockme").remove();
