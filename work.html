@@ -8,19 +8,22 @@
 
     $(function(){
 
+      var done = false;
      var myWorker = new Worker("my_task2.js");
 
                 myWorker.onmessage = function (oEvent) {
           console.log("2Called back by the worker!\n");
+          done = true;
       };
 
 
-      while(true){
+      while(!done){
         var fakeBlock = $.ajax({
           type: "GET",
-          url: "?dsfsdfdsfsd=ffffsdfs8",
+          url: "obj.json",
           async: false
         }).responseText;
+        console.log(fakeBlock);
 
         $("body").append("<div id='blockme'> wassa </div>");
                    // redo(fxn);
