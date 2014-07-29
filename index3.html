@@ -1,0 +1,53 @@
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+    // TODO play with web sockets
+
+    $(function(){
+
+        var doStuff = function(cb){
+            setTimeout(function(){
+               cb(5); 
+           })
+        }
+        var block = function(fxn){
+          var done = false;
+          var result;
+
+          var myWorker = new Worker("my_task.js");
+
+          myWorker.onmessage = function (oEvent) {
+            console.log("Called back by the worker!\n");
+
+          });
+      var getMyShit = function(a){
+        done = true;
+        result = a;
+
+    }
+    while(!done){
+        $("body").append("<div id='blockme'> wassa </div>");
+                   // redo(fxn);
+                   $("#blockme").remove();
+                   console.log("wassa");
+
+               }
+               return result;
+           };
+           
+           var x = block(doStuff);
+           console.log('x', x);
+
+       });
+
+
+    // Trampoline: http://raganwald.com/2013/03/28/trampolines-in-javascript.html
+</script>
+
+<h1 id="header"> wassa </h1>
+<button id="clickme"> Click me </button>
+<div id="timer">0</div>
+<div id="sup">0</div>
