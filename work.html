@@ -1,0 +1,25 @@
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+    // TODO play with web sockets
+
+    $(function(){
+
+     var myWorker = new Worker("my_task2.js");
+
+                myWorker.onmessage = function (oEvent) {
+          console.log("2Called back by the worker!\n");
+      };
+
+    });
+
+    // Trampoline: http://raganwald.com/2013/03/28/trampolines-in-javascript.html
+</script>
+
+<h1 id="header"> Work </h1>
+<button id="clickme"> Click me </button>
+<div id="timer">0</div>
+<div id="sup">0</div>
