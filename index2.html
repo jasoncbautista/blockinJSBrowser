@@ -11,32 +11,39 @@
         var doStuff = function(cb){
             setTimeout(function(){
                cb(5); 
-            })
+           })
         }
         var block = function(fxn){
             var done = false;
             var result;
-            var getMyShit = function(a){
-                done = true;
-                result = a;
 
-            }
-            while(!done){
-                $("body").append("<div id='blockme'> wassa </div>");
-               // redo(fxn);
-               $("#blockme").remove();
-               console.log("wassa");
+                /*
+                var myWorker = new Worker("my_task.js");
+
+                myWorker.onmessage = function (oEvent) {
+          console.log("Called back by the worker!\n");
+      };*/
+      var getMyShit = function(a){
+        done = true;
+        result = a;
+
+    }
+    while(!done){
+        $("body").append("<div id='blockme'> wassa </div>");
+                   // redo(fxn);
+                   $("#blockme").remove();
+                   console.log("wassa");
 
 
 
-           }
-           return result;
-       };
- 
-    var x = block(doStuff);
-    console.log('x', x);
+               }
+               return result;
+           };
+           
+           var x = block(doStuff);
+           console.log('x', x);
 
-    });
+       });
 
     /* Sync xhr
     //also this does not work in worker:
