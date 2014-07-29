@@ -1,5 +1,6 @@
 
 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
@@ -20,7 +21,7 @@
             more++;
             $("#sup").text(more);
             if(blockedEnd){
-                fxn();
+                fxn(); // can't return a fxn itself
             }else{
                 
             var fakeBlock = $.ajax({
@@ -31,15 +32,27 @@
                 
                 console.log("fuck", fakeBlock);
                 
-                redo(fxn);
+               // redo(fxn);
+               return redo;
             }
         };
+
+        var trampoline = function(fun /*, args */) {
+              var result = fun.apply(fun, _.rest(arguments));
+
+              while (_.isFunction(result)) {
+                  result = result();
+              }
+
+              return result;
+          };
+
 
         $("#clickme").click(function(){
             $("#header").text("cool " + Math.random());
         });
         setTimeout(function(){
-            redo(function(){
+            trampoline(redo, function(){
                 console.log("ended")
             });
         }, 5000);
@@ -60,6 +73,9 @@
         }
     };
     */
+
+
+    // Trampoline: http://raganwald.com/2013/03/28/trampolines-in-javascript.html
 </script>
 
 <h1 id="header"> wassa </h1>
