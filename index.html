@@ -7,6 +7,7 @@
 
 
         var counter = 0;
+        var more = 0;
         var blockedEnd = false;
         var t = setInterval(function(){
             counter++;
@@ -15,6 +16,9 @@
 
 
         var redo = function(fxn){
+
+            more++;
+            $("#sup").text(more);
 
             if(blockedEnd){
                 fxn();
